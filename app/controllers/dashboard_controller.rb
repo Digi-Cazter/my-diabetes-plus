@@ -4,4 +4,9 @@ class DashboardController < ApplicationController
 
   def index
   end
+
+  def blood_reading
+    puts params[:test]
+    render nothing: true
+  end
 end
