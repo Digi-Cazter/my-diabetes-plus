@@ -1,6 +1,6 @@
 class DashboardController < ApplicationController
   before_filter :authenticate_user!
-  layout :dashboard
+  layout "dashboard"
 
   def index
   end

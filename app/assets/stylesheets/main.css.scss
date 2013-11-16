@@ -1,0 +1,53 @@
+body {
+  background-color: #C4B4D8;
+}
+
+// Sign In Button
+.btn:focus {
+  outline: none;
+}
+
+a.visited {
+  outline: none;
+}
+
+a.btn_blue {
+  background: #3eacf0;
+  background-image: -webkit-linear-gradient(top, #3eacf0, #2e7eb0);
+  background-image: -moz-linear-gradient(top, #3eacf0, #2e7eb0);
+  background-image: -ms-linear-gradient(top, #3eacf0, #2e7eb0);
+  background-image: -o-linear-gradient(top, #3eacf0, #2e7eb0);
+  background-image: linear-gradient(to bottom, #3eacf0, #2e7eb0);
+  -webkit-border-radius: 8;
+  -moz-border-radius: 8;
+  border-radius: 8px;
+  font-family: Arial;
+  color: #ffffff !important;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  border: solid #757575 1px;
+  text-decoration: none;
+  text-shadow: none !important;
+  margin-top: 15px;
+  margin-right: 8px;
+}
+
+a.btn_blue:hover {
+  background: #2e7eb0;
+  background-image: -webkit-linear-gradient(top, #2e7eb0, #3eacf0);
+  background-image: -moz-linear-gradient(top, #2e7eb0, #3eacf0);
+  background-image: -ms-linear-gradient(top, #2e7eb0, #3eacf0);
+  background-image: -o-linear-gradient(top, #2e7eb0, #3eacf0);
+  background-image: linear-gradient(to bottom, #2e7eb0, #3eacf0);
+  text-decoration: none;
+}
+
+ul.nav {
+  li {
+    margin-right: 10px;
+  }
+}
+
+.margin-0 {
+  margin: 0;
+}
