@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.0.1'
 gem 'thin'
 gem 'devise'
+gem 'rails_12factor', group: :production
 
 # Use postgresql as the database for Active Record
 gem 'pg'
