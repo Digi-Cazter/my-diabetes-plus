@@ -32,54 +32,38 @@
 
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+    <%= favicon_link_tag 'favicon.png', :rel => 'shortcut icon' %>
 
     <%= javascript_include_tag "application" %>
   </head>
   <body>
+    <%= nav_bar fluid: :top, brand: link_to(image_tag("diabetes_plus_logo.png", width: "300px;"), root_path) do %>
+      <ul class="nav pull-right" style="margin-top: 5px;">
+        <% if current_user %>
+          <li><%= button_to "Dashboard", dashboard_index_path, class: "btn btn-default", method: :get %></li>
+          <li><%= button_to "Sign Out", destroy_user_session_path, class: "btn btn-default", method: :delete %></li>
+        <% else %>
+          <li><button class="btn btn-default" data-toggle="modal" href="#sign_in">Sign In</button></li>
+          <li><button class="btn btn-default" data-toggle="modal" href="#sign_up">Sign Up</button></li>
+        <% end %>
+      </ul>
+    <% end %>
+    <%= bootstrap_flash %>
+    <%= yield %>
 
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">My Diabetes +Plus</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav pull-right">
-              <li><%= link_to "Sign In", new_user_session_path %></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
+    <div class="bootstrap-modal modal hide fade" id="sign_in" style="display: none;" aria-hidden="false">
+      <div class="modal-header">
+        <h3>Sign In</h3>
       </div>
+      <%= render template: 'users/sessions/new' %>
     </div>
 
-    <div class="container-fluid">
-      <!-- <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div>
-        </div>
-        <div class="span9">
-          <%= bootstrap_flash %>
-
-        </div>
-      </div> -->
-      <%= yield %>
-
-      <footer>
-        <p>&copy; My Diabetes Plus <%= Time.now.year %></p>
-      </footer>
-
-    </div> <!-- /container -->
-
+    <div class="bootstrap-modal modal hide fade" id="sign_up" style="display: none;" aria-hidden="false">
+      <div class="modal-header">
+        <button class="close" data-dismiss="modal">×</button>
+        <h3>Sign Up</h3>
+      </div>
+      <%= render template: 'users/registrations/new' %>
+    </div>
   </body>
 </html>

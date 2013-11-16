@@ -32,54 +32,23 @@
 
     <!-- For all other devices -->
     <!-- Size should be 32 x 32 pixels -->
-    <%= favicon_link_tag 'favicon.ico', :rel => 'shortcut icon' %>
+    <%= favicon_link_tag 'favicon.png', :rel => 'shortcut icon' %>
 
     <%= javascript_include_tag "application" %>
   </head>
   <body>
 
-    <div class="navbar navbar-fluid-top">
-      <div class="navbar-inner">
-        <div class="container-fluid">
-          <a class="btn btn-navbar" data-target=".nav-collapse" data-toggle="collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">My Diabetes +Plus</a>
-          <div class="container-fluid nav-collapse">
-            <ul class="nav pull-right">
-              <li><%= link_to "Sign In", new_user_session_path %></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+    <%= nav_bar fluid: :top, brand: link_to(image_tag("diabetes_plus_logo.png", width: "300px;"), root_path) do %>
+      <ul class="nav pull-right" style="margin-top: 5px;">
+        <li><%= button_to "Sign Out", destroy_user_session_path, class: "btn btn-default", method: :delete %></li>
+      </ul>
+    <% end %>
+    <%= bootstrap_flash %>
+    <%= yield %>
 
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span3">
-          <div class="well sidebar-nav">
-            <ul class="nav nav-list">
-              <li class="nav-header">Sidebar</li>
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
-            </ul>
-          </div>
-        </div>
-        <div class="span9">
-          <%= bootstrap_flash %>
 
-        </div>
-      </div>
-      <%= yield %>
-
-      <footer>
-        <p>&copy; My Diabetes Plus <%= Time.now.year %></p>
-      </footer>
-
-    </div> <!-- /container -->
-
+    <footer>
+      <p style="text-align: center;">&copy; My Diabetes Plus <%= Time.now.year %></p>
+    </footer>
   </body>
 </html>
