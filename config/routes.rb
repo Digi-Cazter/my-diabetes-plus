@@ -2,7 +2,7 @@ MyDiabetesPlus::Application.routes.draw do
   devise_for :users
 
   resources :dashboard do
-    get :blood_reading, on: :collection
+    post :blood_reading, on: :collection
   end
 
   resources :basals, :boluses
